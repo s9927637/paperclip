@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { t } from ".";
 import en from "./locales/en.json";
+import { SELECTABLE_LOCALES } from "./language";
 import { localeMessages } from "./locales";
-import { validateLocaleMessages } from "./locale-validation";
+import { findMissingLocaleKeys, validateLocaleMessages } from "./locale-validation";
 
 describe("locale validation", () => {
   it("resolves English messages with key and default fallbacks", () => {
@@ -18,23 +19,26 @@ describe("locale validation", () => {
     }
   });
 
-  it("rejects missing and extra nested keys", () => {
-    expect(
-      validateLocaleMessages({
-        app: {
-          noCompanies: {
-            title: en.app.noCompanies.title,
-            description: en.app.noCompanies.description,
-            unexpected: "Unexpected",
-          },
+  it("rejects extra nested keys but tolerates untranslated ones", () => {
+    const candidate = {
+      app: {
+        noCompanies: {
+          title: en.app.noCompanies.title,
+          unexpected: "Unexpected",
         },
-      }),
-    ).toEqual(
-      expect.arrayContaining([
-        "app.noCompanies.newCompany is missing",
-        "app.noCompanies.unexpected is not defined in English",
-      ]),
+      },
+    };
+
+    expect(validateLocaleMessages(candidate)).toEqual(["app.noCompanies.unexpected is not defined in English"]);
+    expect(findMissingLocaleKeys(candidate)).toEqual(
+      expect.arrayContaining(["app.noCompanies.description", "app.noCompanies.newCompany", "sidebar.inbox"]),
     );
+  });
+
+  it("keeps every language offered in the picker fully translated", () => {
+    for (const { code } of SELECTABLE_LOCALES) {
+      expect(findMissingLocaleKeys(localeMessages[code]), code).toEqual([]);
+    }
   });
 
   it("rejects non-string leaves", () => {

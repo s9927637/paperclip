@@ -1,9 +1,62 @@
 {
   "app": {
     "noCompanies": {
-      "title": "建立您的第一家公司",
-      "description": "從建立公司開始。",
-      "newCompany": "新公司"
-    }
+      "title": "建立您的第一個組織",
+      "description": "從建立組織開始。",
+      "newCompany": "新增組織"
+    },
+    "cloudCreateUnavailable": "組織需在 Paperclip Cloud 中建立。此執行個體目前無法連線至 Cloud，請稍後從您的 Cloud 組合重試。"
+  },
+  "language": {
+    "label": "語言",
+    "description": "選擇顯示語言。"
+  },
+  "theme": {
+    "switchToLight": "切換至淺色模式",
+    "switchToDark": "切換至深色模式",
+    "description": "切換應用程式外觀。"
+  },
+  "account": {
+    "openMenu": "開啟帳號選單",
+    "viewProfile": "檢視個人檔案",
+    "board": "董事會",
+    "signedIn": "已登入",
+    "localBoard": "本機工作區董事會",
+    "invite": "邀請",
+    "inviteDescription": "邀請成員加入您的組織。",
+    "documentation": "說明文件",
+    "documentationDescription": "在新分頁開啟 Paperclip 說明文件。",
+    "signOut": "登出",
+    "signingOut": "登出中...",
+    "signOutDescription": "結束此瀏覽器工作階段。",
+    "shareFeedback": "提供意見回饋"
+  },
+  "sidebar": {
+    "newTask": "新增任務",
+    "search": "搜尋",
+    "dashboard": "儀表板",
+    "inbox": "收件匣",
+    "unread": "未讀",
+    "decisions": "待決事項",
+    "status": "狀態",
+    "beta": "測試版",
+    "conferenceRoom": "會議室",
+    "work": "工作",
+    "tasks": "任務",
+    "cases": "案件",
+    "routines": "例行工作",
+    "pipelines": "管線",
+    "goals": "目標",
+    "artifacts": "成品",
+    "skills": "技能",
+    "workspaces": "工作區",
+    "projects": "專案",
+    "company": "公司",
+    "org": "組織架構",
+    "connectors": "連接器",
+    "timeline": "時間軸",
+    "costs": "成本",
+    "activity": "活動",
+    "settings": "設定"
   }
 }

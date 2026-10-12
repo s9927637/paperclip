@@ -90,12 +90,11 @@ function validateNode(path: string[], candidate: unknown, englishReference: unkn
 
   const englishKeys = Object.keys(englishReference).sort();
   const candidateKeys = Object.keys(candidate).sort();
-  const missingKeys = englishKeys.filter((key) => !candidateKeys.includes(key));
   const extraKeys = candidateKeys.filter((key) => !englishKeys.includes(key));
 
-  for (const key of missingKeys) {
-    errors.push(`${formatPath([...path, key])} is missing`);
-  }
+  // Missing keys are allowed: i18next falls back to English for any key a
+  // locale does not translate yet. Use `findMissingLocaleKeys` to assert that a
+  // locale offered in the language picker is complete.
   for (const key of extraKeys) {
     errors.push(`${formatPath([...path, key])} is not defined in English`);
   }
@@ -111,6 +110,17 @@ export function validateLocaleMessages(candidate: unknown, englishReference: unk
   const errors: string[] = [];
   validateNode([], candidate, englishReference, errors);
   return errors;
+}
+
+function collectLeafPaths(node: unknown, prefix: string[] = []): string[] {
+  if (!isPlainObject(node)) return [formatPath(prefix)];
+  return Object.entries(node).flatMap(([key, value]) => collectLeafPaths(value, [...prefix, key]));
+}
+
+/** Lists English message keys that a locale has not translated yet. */
+export function findMissingLocaleKeys(candidate: unknown, englishReference: unknown = en) {
+  const translated = new Set(isPlainObject(candidate) ? collectLeafPaths(candidate) : []);
+  return collectLeafPaths(englishReference).filter((path) => !translated.has(path));
 }
 
 export function assertValidLocaleMessages(candidate: unknown, englishReference: unknown = en) {

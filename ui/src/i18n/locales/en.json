@@ -4,6 +4,59 @@
       "title": "Create your first organization",
       "description": "Get started by creating an organization.",
       "newCompany": "New Organization"
-    }
+    },
+    "cloudCreateUnavailable": "Organizations are created in Paperclip Cloud. This instance can't reach it right now — try again from your Cloud portfolio."
+  },
+  "language": {
+    "label": "Language",
+    "description": "Choose the display language."
+  },
+  "theme": {
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
+    "description": "Toggle the app appearance."
+  },
+  "account": {
+    "openMenu": "Open account menu",
+    "viewProfile": "View profile",
+    "board": "Board",
+    "signedIn": "Signed in",
+    "localBoard": "Local workspace board",
+    "invite": "Invite",
+    "inviteDescription": "Invite people to your organization.",
+    "documentation": "Documentation",
+    "documentationDescription": "Open Paperclip docs in a new tab.",
+    "signOut": "Sign out",
+    "signingOut": "Signing out...",
+    "signOutDescription": "End this browser session.",
+    "shareFeedback": "Share feedback"
+  },
+  "sidebar": {
+    "newTask": "New Task",
+    "search": "Search",
+    "dashboard": "Dashboard",
+    "inbox": "Inbox",
+    "unread": "unread",
+    "decisions": "Decisions",
+    "status": "Status",
+    "beta": "beta",
+    "conferenceRoom": "Conference Room",
+    "work": "Work",
+    "tasks": "Tasks",
+    "cases": "Cases",
+    "routines": "Routines",
+    "pipelines": "Pipelines",
+    "goals": "Goals",
+    "artifacts": "Artifacts",
+    "skills": "Skills",
+    "workspaces": "Workspaces",
+    "projects": "Projects",
+    "company": "Company",
+    "org": "Org",
+    "connectors": "Connectors",
+    "timeline": "Timeline",
+    "costs": "Costs",
+    "activity": "Activity",
+    "settings": "Settings"
   }
 }
